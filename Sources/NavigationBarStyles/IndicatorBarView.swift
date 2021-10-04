@@ -20,9 +20,9 @@ internal struct IndicatorBarView: View {
     }
 
     var content: some View {
-        Group {
-            let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
-            let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
+        let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
+        let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
+        return Group {
             if let width = navBarItemWidth, width > 0, width <= settings.width {
                 let x = -settings.contentOffset / CGFloat(dataStore.itemsCount) + width / 2
                 Rectangle()
@@ -30,6 +30,8 @@ internal struct IndicatorBarView: View {
                     .animation(.default)
                     .frame(width: width)
                     .position(x: x, y: 0)
+            } else {
+                EmptyView()
             }
         }
     }
