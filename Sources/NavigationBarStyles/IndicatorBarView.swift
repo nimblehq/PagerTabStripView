@@ -20,8 +20,8 @@ internal struct IndicatorBarView: View {
     }
 
     var content: some View {
-        let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
-        let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
+        let totalItemWidth: CGFloat = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
+        let navBarItemWidth: CGFloat = totalItemWidth / CGFloat(dataStore.itemsCount)
         return Group {
             if let width = navBarItemWidth, width > 0, width <= settings.width {
                 let x = -settings.contentOffset / CGFloat(dataStore.itemsCount) + width / 2
