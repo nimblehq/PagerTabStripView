@@ -14,6 +14,13 @@ internal struct IndicatorBarView: View {
 
     var body: some View {
         HStack {
+            content
+        }
+        .frame(height: style.indicatorBarHeight)
+    }
+
+    var content: some View {
+        Group {
             let totalItemWidth = (settings.width - (style.tabItemSpacing * CGFloat(dataStore.itemsCount - 1)))
             let navBarItemWidth = totalItemWidth / CGFloat(dataStore.itemsCount)
             if let width = navBarItemWidth, width > 0, width <= settings.width {
@@ -25,7 +32,6 @@ internal struct IndicatorBarView: View {
                     .position(x: x, y: 0)
             }
         }
-        .frame(height: style.indicatorBarHeight)
     }
 
     @Environment(\.pagerStyle) var style: PagerStyle
